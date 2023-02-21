@@ -1,4 +1,4 @@
-import 'package:evira/widgets/product.dart';
+import 'package:evira/src/models/product/product.dart';
 import 'package:flutter/material.dart';
 
 class CartItem {
@@ -9,7 +9,6 @@ class CartItem {
 }
 
 class CartModel with ChangeNotifier {
-
   Map<String, CartItem> items = {};
   Map<String, CartItem> get getItems {
     return {...items};
@@ -21,7 +20,11 @@ class CartModel with ChangeNotifier {
 
   void addItem(String itemId, CartItem item) {
     if (items.containsKey(itemId)) {
-      items.update(itemId, (existingItem) => CartItem(product: existingItem.product, quantity: existingItem.quantity + item.quantity));
+      items.update(
+          itemId,
+          (existingItem) => CartItem(
+              product: existingItem.product,
+              quantity: existingItem.quantity + item.quantity));
     } else {
       items.putIfAbsent(itemId, () => item);
     }
@@ -32,8 +35,12 @@ class CartModel with ChangeNotifier {
     if (!items.containsKey(itemId)) {
       return;
     }
-    if(items[itemId]!.quantity > 1){
-      items.update(itemId, (existingItem) => CartItem(product: existingItem.product, quantity: existingItem.quantity - 1));
+    if (items[itemId]!.quantity > 1) {
+      items.update(
+          itemId,
+          (existingItem) => CartItem(
+              product: existingItem.product,
+              quantity: existingItem.quantity - 1));
     }
     notifyListeners();
   }
@@ -56,14 +63,14 @@ class CartModel with ChangeNotifier {
   }
 
   int getQuantity(String itemId) {
-    if(items.containsKey(itemId)){
+    if (items.containsKey(itemId)) {
       return items[itemId]!.quantity;
     }
     return 0;
   }
 
   bool isItemPresent(String itemId) {
-    if(items.containsKey(itemId)) {
+    if (items.containsKey(itemId)) {
       return true;
     }
     return false;

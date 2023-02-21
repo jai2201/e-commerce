@@ -1,11 +1,11 @@
-import 'package:evira/widgets/cart.dart';
+import 'package:evira/src/models/cart/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class CartProduct extends StatelessWidget {
+class CartItemLayout extends StatelessWidget {
   final CartItem cartItem;
-  const CartProduct(this.cartItem, {super.key});
+  const CartItemLayout(this.cartItem, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,8 @@ class CartProduct extends StatelessWidget {
                         width: 120,
                         decoration: const BoxDecoration(
                             color: Color(0xff35383f),
-                            borderRadius: BorderRadius.all(Radius.circular(30))),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30))),
                         child: Padding(
                           padding: const EdgeInsets.all(10),
                           child: Image.asset(
@@ -89,7 +90,8 @@ class CartProduct extends StatelessWidget {
                                     IconButton(
                                         onPressed: () {
                                           if (cartItem.quantity > 1) {
-                                            cart.removeItem(cartItem.product.id);
+                                            cart.removeItem(
+                                                cartItem.product.id);
                                           }
                                         },
                                         icon: const Icon(
@@ -108,7 +110,8 @@ class CartProduct extends StatelessWidget {
                                         onPressed: () {
                                           if (cartItem.quantity > 0 &&
                                               cartItem.quantity < 100) {
-                                            cart.addItem(cartItem.product.id, cartItem);
+                                            cart.addItem(
+                                                cartItem.product.id, cartItem);
                                           }
                                         },
                                         icon: const Icon(

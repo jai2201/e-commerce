@@ -1,7 +1,5 @@
-import 'package:evira/screens/layout.dart';
-import 'package:evira/screens/myCartScreen.dart';
-import 'package:evira/widgets/cart.dart';
-import 'package:evira/widgets/product.dart';
+import 'package:evira/src/models/cart/cart.dart';
+import 'package:evira/src/models/product/product.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
@@ -253,18 +251,22 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 40, vertical: 10)),
                             onPressed: () {
-                              cart.addItem(details.id, CartItem(
-                                  product: details, quantity: numberOfItem));
+                              cart.addItem(
+                                  details.id,
+                                  CartItem(
+                                      product: details,
+                                      quantity: numberOfItem));
                             },
                             child: Row(
                               children: <Widget>[
                                 const Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 10),
-                                  child: Icon(Icons.shopping_cart,
-                                    color: Colors.black,
-                                    size: 18,
-                                  )
-                                ),
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 10),
+                                    child: Icon(
+                                      Icons.shopping_cart,
+                                      color: Colors.black,
+                                      size: 18,
+                                    )),
                                 Text("Add to Cart",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.jost(

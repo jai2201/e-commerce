@@ -13,6 +13,20 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 24, 26, 33),
+        elevation: 0,
+        title: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          child: Text("Search your favorite products",
+              textAlign: TextAlign.left,
+              style: GoogleFonts.jost(
+                  textStyle: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500))),
+        ),
+      ),
       backgroundColor: const Color.fromARGB(255, 24, 26, 33),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),

@@ -1,5 +1,5 @@
-import 'package:evira/screens/homeScreen.dart';
-import 'package:evira/screens/landingScreen.dart';
+import 'package:evira/src/routes/screen_routes.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -7,7 +7,6 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
-  static const routeName = "/onboardingScreen";
 
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();
@@ -155,7 +154,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 prefs.setBool('showHome', true),
                                 // ignore: use_build_context_synchronously
                                 Navigator.of(context).pushReplacementNamed(
-                                    LandingScreen.routeName)
+                                    ScreenRoutes.landingScreenRoute)
                               }
                             : controller.nextPage(
                                 duration: const Duration(milliseconds: 500),

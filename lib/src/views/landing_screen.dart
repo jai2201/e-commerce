@@ -1,11 +1,10 @@
-import 'package:evira/screens/loginScreen.dart';
-import 'package:evira/screens/signupScreen.dart';
+import 'package:evira/src/views/login_screen.dart';
+import 'package:evira/src/views/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key});
-  static const routeName = "/landingScreen";
 
   @override
   State<LandingScreen> createState() => _LandingScreenState();

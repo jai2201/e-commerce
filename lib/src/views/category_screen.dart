@@ -1,5 +1,4 @@
-import 'package:evira/widgets/product.dart';
-import 'package:evira/widgets/productCard.dart';
+import 'package:evira/src/models/product/product_card.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
@@ -49,47 +48,6 @@ class CategoryScreen extends StatelessWidget {
           },
         ),
       ),
-      // child: GridView.builder(
-      //   itemCount: categoryProducts.length,
-      //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-      //       crossAxisCount: 2,
-      //       crossAxisSpacing: 30.0,
-      //       mainAxisSpacing: 70.0),
-      //   itemBuilder: (BuildContext context, int index) {
-      //     return Container(child: categoryProducts[index]);
-      //   },
     );
-
-    //     Row(
-    //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //       children: <Widget>[
-    //         ProductCard(
-    //             productDetails: Product(
-    //           id: "1",
-    //           imageUrl: "assets/shoes.png",
-    //           name: "Suga Leather Shoes",
-    //           price: 445,
-    //           numberOfItemsSold: 8374,
-    //           categoryName: "Sports",
-    //         )),
-    //         ProductCard(
-    //             productDetails: Product(
-    //           id: "1",
-    //           imageUrl: "assets/camera.png",
-    //           name: "Suga Leather Shoes",
-    //           price: 445,
-    //           numberOfItemsSold: 8374,
-    //           categoryName: "Sports",
-    //         )),
-    //       ],
-    //     ),
-    //     const SizedBox(
-    //       height: 20,
-    //     ),
-    // ),
-
-    // ListView.builder(
-    //               itemCount: categoryProducts.length,
-    //               itemBuilder: (context, index) => categoryProducts[index])),
   }
 }

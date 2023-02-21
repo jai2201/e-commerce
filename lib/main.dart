@@ -1,34 +1,40 @@
-import 'package:evira/screens/homeScreen.dart';
-import 'package:evira/screens/landingScreen.dart';
-import 'package:evira/screens/layout.dart';
-import 'package:evira/screens/loginScreen.dart';
-import 'package:evira/screens/myCartScreen.dart';
-import 'package:evira/screens/onBoardingScreen.dart';
-import 'package:evira/screens/searchScreen.dart';
-import 'package:evira/screens/signupScreen.dart';
-import 'package:evira/screens/specialOfferScreen.dart';
-import 'package:evira/widgets/cart.dart';
+import 'package:evira/src/routes/route_generator.dart';
+import 'package:evira/src/routes/screen_routes.dart';
+import 'package:evira/src/models/cart/cart.dart';
 import 'package:flutter/material.dart';
-import 'package:evira/screens/splashScreen.dart';
+import 'package:evira/src/views/splash_screen.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(MultiProvider(
-    providers: [ChangeNotifierProvider.value(value: CartModel())],
-    child: MaterialApp(
-      title: 'Evira',
-      home: const SplashScreen(),
-      routes: {
-        OnboardingScreen.routeName: (context) => const OnboardingScreen(),
-        LandingScreen.routeName: (context) => const LandingScreen(),
-        LoginScreen.routeName: (context) => const LoginScreen(),
-        SignupScreen.routeName: (context) => const SignupScreen(),
-        HomeScreen.routeName: (context) => const HomeScreen(),
-        SpecialOfferScreen.routeName: (context) => const SpecialOfferScreen(),
-        SearchScreen.routeName: (context) => const SearchScreen(),
-        Layout.routeName: (context) => Layout(selectedIndex: 0,),
-        MyCartScreen.routeName: (context) => const MyCartScreen(),
-      },
-    ),
-  ));
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(const MyApp());
+  });
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [ChangeNotifierProvider.value(value: CartModel())],
+      child: MaterialApp(
+        title: 'Evira',
+        home: const SplashScreen(),
+        theme: ThemeData(
+            textTheme: GoogleFonts.jostTextTheme(Theme.of(context).textTheme)),
+        initialRoute: ScreenRoutes.splashScreenRoute,
+        onGenerateRoute: RouteGenerator.generateRoutes,
+      ),
+    );
+  }
 }

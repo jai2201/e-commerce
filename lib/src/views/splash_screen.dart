@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:evira/screens/landingScreen.dart';
-import 'package:evira/screens/onBoardingScreen.dart';
+import 'package:evira/src/routes/screen_routes.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,12 +20,12 @@ class _SplashScreenState extends State<SplashScreen> {
 
     if (showHome) {
       // ignore: use_build_context_synchronously
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const LandingScreen()));
+      Navigator.of(context)
+          .pushReplacementNamed(ScreenRoutes.landingScreenRoute);
     } else {
       // ignore: use_build_context_synchronously
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const OnboardingScreen()));
+      Navigator.of(context)
+          .pushReplacementNamed(ScreenRoutes.onboardingScreenRoute);
     }
   }
 

@@ -1,5 +1,5 @@
-import 'package:evira/screens/layout.dart';
-import 'package:evira/screens/loginScreen.dart';
+import 'package:evira/src/views/layout.dart';
+import 'package:evira/src/views/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -145,7 +145,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   onPressed: () {
                     Navigator.of(context).pop();
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => Layout(selectedIndex: 0,)));
+                        builder: (context) => const Layout()));
                   },
                   child: Text("Sign up",
                       textAlign: TextAlign.center,

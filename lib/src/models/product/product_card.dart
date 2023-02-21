@@ -1,5 +1,5 @@
-import 'package:evira/screens/productDetailScreen.dart';
-import 'package:evira/widgets/product.dart';
+import 'package:evira/src/views/product_detail_screen.dart';
+import 'package:evira/src/models/product/product.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 

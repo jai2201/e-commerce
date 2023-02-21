@@ -1,5 +1,6 @@
-import 'package:evira/widgets/cart.dart';
-import 'package:evira/widgets/cartproduct.dart';
+import 'package:evira/src/models/cart/cart.dart';
+import 'package:evira/src/models/cart/cart_item_layout.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +13,20 @@ class MyCartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final cart = Provider.of<CartModel>(context);
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 24, 26, 33),
+        elevation: 0,
+        title: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          child: Text("My Cart",
+              textAlign: TextAlign.left,
+              style: GoogleFonts.jost(
+                  textStyle: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500))),
+        ),
+      ),
       extendBody: true,
       backgroundColor: const Color.fromARGB(255, 24, 26, 33),
       body: Container(
@@ -25,8 +40,7 @@ class MyCartScreen extends StatelessWidget {
                   child: ListView.builder(
                       itemCount: cart.items.length,
                       itemBuilder: (context, index) =>
-                            CartProduct(cart.items.values.toList()[index])
-                  ),
+                          CartItemLayout(cart.items.values.toList()[index])),
                 ),
               ],
             )),
@@ -45,10 +59,6 @@ class MyCartScreen extends StatelessWidget {
                 blurRadius: 5.0,
               ),
             ],
-            // border: Border.
-            // border: Border.symmetric(
-            //     vertical: BorderSide(color: Colors.grey, width: 1),
-            //     horizontal: BorderSide(color: Colors.grey, width: 1)),
             borderRadius: BorderRadius.vertical(top: Radius.circular(30.0)),
           ),
           height: 70,
@@ -81,9 +91,7 @@ class MyCartScreen extends StatelessWidget {
                     style: FilledButton.styleFrom(
                         backgroundColor: Colors.white,
                         minimumSize: const Size(50, 40)),
-                    onPressed: () {
-
-                    },
+                    onPressed: () {},
                     child: Row(
                       children: <Widget>[
                         Text("Checkout",

@@ -1,9 +1,6 @@
-import 'dart:async';
-
-import 'package:evira/screens/categoryScreen.dart';
-import 'package:evira/widgets/product.dart';
-import 'package:evira/widgets/productCard.dart';
-import 'package:evira/screens/specialOfferScreen.dart';
+import 'package:evira/src/views/category_screen.dart';
+import 'package:evira/src/models/product/product_card.dart';
+import 'package:evira/src/views/special_offers_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -11,7 +8,6 @@ import 'package:carousel_indicator/carousel_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
-  static const routeName = "/homeScreen";
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -23,6 +19,79 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 24, 26, 33),
+        elevation: 0,
+        title: Padding(
+          padding: const EdgeInsets.fromLTRB(10, 15, 0, 0),
+          child: Row(
+            children: <Widget>[
+              const CircleAvatar(
+                backgroundImage: AssetImage('assets/profile.jpeg'),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Text("Good Morning",
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.jost(
+                                textStyle: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w300))),
+                        const SizedBox(
+                          width: 2,
+                        ),
+                        const Text('\uD83D\uDC4B ',
+                            style:
+                                TextStyle(fontSize: 14, color: Colors.yellow))
+                      ],
+                    ),
+                    Text("Andrew Ainsley",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.jost(
+                            textStyle: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500))),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 15, 10, 0),
+            child: Row(
+              children: <Widget>[
+                IconButton(
+                  icon: const Icon(
+                    Icons.notifications_outlined,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    // do something
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(
+                    Icons.favorite_border_outlined,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    // do something
+                  },
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
       backgroundColor: const Color.fromARGB(255, 24, 26, 33),
       body: Padding(
           padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
@@ -593,7 +662,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             GridView.builder(
-                physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 30.0,
